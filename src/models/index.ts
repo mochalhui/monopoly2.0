@@ -38,6 +38,8 @@ export const {
     ])
     // 当前活跃用户
     const currentUser = computed(() => userList.value.find(item => item.id === controller.currentUserId))
+    // 非活跃用户
+    const anotherUser = computed(() => userList.value.find(item => item !== currentUser.value));
     // 用户1是否活跃
     const isUser1Active = computed(() => {
         return currentUser.value?.id === user1.id;
@@ -53,38 +55,104 @@ export const {
 
     watch(() => user1.currentStep, (step) => {
         // 每次走动都到这里
-        const owner = areaAddressList[step].owner;
-        const houseLevel = areaAddressList[step].houseLevel;
-        if (owner) {
-            // 消费酒店
+        const {
+            owner,
+            houseLevel,
+            customProps,
+        } = areaAddressList[step];
+        if (user2.stopCount) {
+            // 如果二号在监狱
+            user2.stopCount--;
+            controller.setActiveBehavior('move');
+        } else if (owner) {
+            // 消费酒店逻辑在这，处理普通房子
             if (owner === user2.id) {
-                // TODO: 考虑级别
-                user2.changeMoney(100);
-                user1.changeMoney(-200);
+                // TODO: 考虑级别做的更好些
+                user2.changeMoney(100 * houseLevel!);
+                user1.changeMoney(-200 * houseLevel!);
                 // 如果是单纯的移动，结束后把控制权给另一个用户
                 controller.activeUser(user2.id);
             } else {
                 // 房子升级
-                if (houseLevel && houseLevel < 3 && user1.moneySum >= updateCost) {
+                if (houseLevel! < 3 && user1.moneySum >= updateCost) {
                     controller.setActiveBehavior('update');
                 } else {
                     // 不能升级的时候，控制权给另一个人
                     controller.activeUser(user2.id);
                 }
             }
-        } else {
+        } else if (typeof houseLevel === 'number') {
+            // 可以买房子
             controller.setActiveBehavior('buy');
+        } else if (customProps) {
+            // 如果走到的是特殊位置
+            if (customProps.suspend) {
+                // 监狱
+                user1.stopCount += customProps.suspend;
+            } else if (customProps.lucky) {
+                // 给当前用户抽奖,
+                controller.activeUser(user2.id);
+            } else if (customProps.storeGoods) {
+                // 给用户执行购买商城
+                // controller.setActiveBehavior('store');
+            }
+        }
+    })
+
+    watch(() => user2.currentStep, (step) => {
+        // 每次走动都到这里
+        const {
+            owner,
+            houseLevel,
+            customProps,
+        } = areaAddressList[step];
+        if (user1.stopCount) {
+            // 如果二号在监狱
+            user1.stopCount--;
+            controller.setActiveBehavior('move');
+        } else if (owner) {
+            // 消费酒店逻辑在这，处理普通房子
+            if (owner === user1.id) {
+                // TODO: 考虑级别做的更好些
+                user1.changeMoney(100 * houseLevel!);
+                user2.changeMoney(-200 * houseLevel!);
+                // 如果是单纯的移动，结束后把控制权给另一个用户
+                controller.activeUser(user1.id);
+            } else {
+                // 房子升级
+                if (houseLevel! < 3 && user2.moneySum >= updateCost) {
+                    controller.setActiveBehavior('update');
+                } else {
+                    // 不能升级的时候，控制权给另一个人
+                    controller.activeUser(user1.id);
+                }
+            }
+        } else if (typeof houseLevel === 'number') {
+            // 可以买房子
+            controller.setActiveBehavior('buy');
+        } else if (customProps) {
+            // 如果走到的是特殊位置
+            if (customProps.suspend) {
+                // 监狱
+                user2.stopCount += customProps.suspend;
+            } else if (customProps.lucky) {
+                // 给当前用户抽奖,
+                controller.activeUser(user1.id);
+            } else if (customProps.storeGoods) {
+                // 给用户执行购买商城
+                // controller.setActiveBehavior('store');
+            }
         }
     })
 
     // 谁的钱小于0游戏都终止
-    watch(() => user1.moneySum, money =>{
-        if(money < 0) {
+    watch(() => user1.moneySum, money => {
+        if (money < 0) {
             alert(user1.userName);
         }
     })
-    watch(() => user2.moneySum, money =>{
-        if(money < 0) {
+    watch(() => user2.moneySum, money => {
+        if (money < 0) {
             alert(user2.userName);
         }
     })
@@ -112,12 +180,24 @@ export const {
                 controller.activeUser(user2.id);
             }
         }
-        // 用户二逻辑 先注释掉，后面写
-        // else {
-        //     if (e.key === 'ArrowUp') {
-        //         user2.moveTo(getN());
-        //     }
-        // }
+        // 用户二逻辑
+        else {
+            if (e.key === 'ArrowUp') {
+                if (controller.activeBehavior === 'move') {
+                    user2.moveTo(getN());
+                    // 移动完了，看看对应step有没有需要特殊按键的
+                    controller.setActiveBehavior('');
+                } else if (controller.activeBehavior === 'buy') {
+                    areaAddressList[user2.currentStep].owner = user2.id;
+                } else if (controller.activeBehavior === 'update') {
+                    areaAddressList[user2.currentStep].houseLevel!++;
+                }
+                // 无论按了什么最终都把控制器交给另一个用户
+                controller.activeUser(user2.id);
+            } else if (e.key === 'ArrowDown') {
+                controller.activeUser(user2.id);
+            }
+        }
     })
 
     return {

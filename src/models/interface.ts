@@ -383,12 +383,13 @@ const asyncList: Array<luckyList> = [{
 }]
 
 // 购买升级
-export type actions = 'move' | '' | 'buy' | 'update';
+export type actions = 'move' | '' | 'buy' | 'update' | 'store';
 
 export const behaviour: Partial<Record<actions, string>> = {
 	move: '移动',
 	buy: '买地',
 	update: '升级',
+	store: '商城购买',
 }
 
 export const updateCost = 200; // 升级需要的钱
