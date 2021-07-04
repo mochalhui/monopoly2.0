@@ -22,5 +22,9 @@ module.exports = {
     'comma-dangle': 'off',
     'indent': 'off',
     'padded-blocks': 'off',
+    'key-spacing': 'off',
+    'lines-between-class-members': 'off',
+    'no-tabs': 'off',
+    'brace-style': 'off',
   }
 }

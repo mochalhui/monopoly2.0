@@ -337,24 +337,25 @@ export interface UserInfo {
 	eachCoin: number; // 每次多少钱
 	image: string; // 头像url
 	stopCount: number; // 停留回合
+	currentStep: 0; // 当前位置
 }
 
-export const userData: Array<UserInfo> = [
-	{
-		userName: "小啵",
-		moneySum: 10000,
-		eachCoin: 300,
-		image: '',
-		stopCount: 0,
-	},
-	{
-		userName: "胖啵",
-		moneySum: 10000,
-		eachCoin: 300,
-		image: '',
-		stopCount: 0
-	},
-];
+// export const userData: Array<UserInfo> = [
+// 	{
+// 		userName: "小啵",
+// 		moneySum: 10000,
+// 		eachCoin: 300,
+// 		image: '',
+// 		stopCount: 0,
+// 	},
+// 	{
+// 		userName: "胖啵",
+// 		moneySum: 10000,
+// 		eachCoin: 300,
+// 		image: '',
+// 		stopCount: 0
+// 	},
+// ];
 export const pass = [//经过房子的属性
      {
          0:  () => 0
@@ -380,3 +381,12 @@ const asyncList :Array<luckyList> = [{
     coin: 100, 
     stopTime: 100, 
 }]
+
+// 购买升级
+export type actions = 'move' | '' | 'buy' | 'update';
+
+export const behaviour: Partial<Record<actions, string>> =  {
+	move: '移动',
+	buy: '买地',
+	update: '升级',
+}
