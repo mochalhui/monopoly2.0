@@ -18,7 +18,7 @@ export interface AreaItem {
 	houseLevel?: 0; // 房子级别
 }
 
-export const areaAddressList: Array<AreaItem> = [
+export const createAreaAddressList = (): Array<AreaItem> => [
 	{
 		id: 'store',
 		gridarea: "1/1/1/2",
@@ -357,35 +357,35 @@ export interface UserInfo {
 // 	},
 // ];
 export const pass = [//经过房子的属性
-     {
-         0:  () => 0
-     },
-     {
-         1: () => 200,
-     },
-     {
-         2: () => 400,
-     },
-     {
-         3: () => Math.ceil(Math.random() * 100 * 6)
-     }
- ]
-export interface luckyList{
-    eachCoin : object;// 每回合变更金币, number
-    coin: number;//  Number 直接给或者扣的钱
-    stopTime: number;// 炸弹停留次数
+	{
+		0: () => 0
+	},
+	{
+		1: () => 200,
+	},
+	{
+		2: () => 400,
+	},
+	{
+		3: () => Math.ceil(Math.random() * 100 * 6)
+	}
+]
+export interface luckyList {
+	eachCoin: object;// 每回合变更金币, number
+	coin: number;//  Number 直接给或者扣的钱
+	stopTime: number;// 炸弹停留次数
 }
- // 问号
-const asyncList :Array<luckyList> = [{
-    eachCoin: () => -100, 
-    coin: 100, 
-    stopTime: 100, 
+// 问号
+const asyncList: Array<luckyList> = [{
+	eachCoin: () => -100,
+	coin: 100,
+	stopTime: 100,
 }]
 
 // 购买升级
 export type actions = 'move' | '' | 'buy' | 'update';
 
-export const behaviour: Partial<Record<actions, string>> =  {
+export const behaviour: Partial<Record<actions, string>> = {
 	move: '移动',
 	buy: '买地',
 	update: '升级',

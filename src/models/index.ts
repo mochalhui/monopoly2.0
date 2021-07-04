@@ -2,7 +2,7 @@ import createProvider from '@ad/vue-hook-model';
 import AccessControl from './contoler';
 import User from './user';
 import { reactive, computed, watch } from '@vue/composition-api'
-import { areaAddressList, behaviour, updateCost } from './interface';
+import { createAreaAddressList, behaviour, updateCost } from './interface';
 const getN = () => {
     // TODO:zzh 
     return Math.ceil(Math.random() * 6);
@@ -18,6 +18,7 @@ export const {
         eachCoin: 300,
         image: '',
     }));
+    const areaAddressList = reactive(createAreaAddressList());
 
     const user1 = reactive(new User(
         {
