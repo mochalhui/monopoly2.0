@@ -20,6 +20,7 @@ module.exports = {
     'eol-last': 'off',
     'space-before-function-paren': 'off',
     'comma-dangle': 'off',
-    'indent': 'off'
+    'indent': 'off',
+    'padded-blocks': 'off',
   }
 }
