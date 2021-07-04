@@ -336,24 +336,47 @@ export interface UserInfo {
 	moneySum: number; // 钱数
 	eachCoin: number; // 每次多少钱
 	image: string; // 头像url
-	stopCount: number; // 停留会和
+	stopCount: number; // 停留回合
 }
 
-const userData = [
+export const userData: Array<UserInfo> = [
 	{
-		username: "小啵",
-		houseCount: 0,
+		userName: "小啵",
 		moneySum: 10000,
 		eachCoin: 300,
 		image: '',
 		stopCount: 0,
 	},
 	{
-		username: "胖啵",
-		houseCount: 0,
+		userName: "胖啵",
 		moneySum: 10000,
 		eachCoin: 300,
 		image: '',
 		stopCount: 0
 	},
 ];
+export const pass = [//经过房子的属性
+     {
+         0:  () => 0
+     },
+     {
+         1: () => 200,
+     },
+     {
+         2: () => 400,
+     },
+     {
+         3: () => Math.ceil(Math.random() * 100 * 6)
+     }
+ ]
+export interface luckyList{
+    eachCoin : object;// 每回合变更金币, number
+    coin: number;//  Number 直接给或者扣的钱
+    stopTime: number;// 炸弹停留次数
+}
+ // 问号
+const asyncList :Array<luckyList> = [{
+    eachCoin: () => -100, 
+    coin: 100, 
+    stopTime: 100, 
+}]
