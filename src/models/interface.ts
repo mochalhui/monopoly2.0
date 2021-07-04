@@ -390,3 +390,5 @@ export const behaviour: Partial<Record<actions, string>> =  {
 	buy: '买地',
 	update: '升级',
 }
+
+export const updateCost = 200; // 升级需要的钱

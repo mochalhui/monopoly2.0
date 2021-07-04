@@ -10,6 +10,7 @@ export default class AccessControl {
     }
     activeUser(id: number) {
         this.currentUserId = id;
+        this.setActiveBehavior('move');
     }
     setActiveBehavior(val: actions) {
         this.activeBehavior = val;

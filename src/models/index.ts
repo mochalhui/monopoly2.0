@@ -2,7 +2,7 @@ import createProvider from '@ad/vue-hook-model';
 import AccessControl from './contoler';
 import User from './user';
 import { reactive, computed, watch } from '@vue/composition-api'
-import { areaAddressList, behaviour } from './interface';
+import { areaAddressList, behaviour, updateCost } from './interface';
 const getN = () => {
     // TODO:zzh 
     return Math.ceil(Math.random() * 6);
@@ -51,20 +51,40 @@ export const {
     })
 
     watch(() => user1.currentStep, (step) => {
+        // 每次走动都到这里
         const owner = areaAddressList[step].owner;
+        const houseLevel = areaAddressList[step].houseLevel;
         if (owner) {
             // 消费酒店
             if (owner === user2.id) {
                 // TODO: 考虑级别
                 user2.changeMoney(100);
-                user1.changeMoney(-200)
+                user1.changeMoney(-200);
+                // 如果是单纯的移动，结束后把控制权给另一个用户
+                controller.activeUser(user2.id);
             } else {
-                controller.setActiveBehavior('update');
-                // TODO: // 房子升级
+                // 房子升级
+                if (houseLevel && houseLevel < 3 && user1.moneySum >= updateCost) {
+                    controller.setActiveBehavior('update');
+                } else {
+                    // 不能升级的时候，控制权给另一个人
+                    controller.activeUser(user2.id);
+                }
             }
         } else {
             controller.setActiveBehavior('buy');
-            // TODO: 购买地
+        }
+    })
+
+    // 谁的钱小于0游戏都终止
+    watch(() => user1.moneySum, money =>{
+        if(money < 0) {
+            alert(user1.userName);
+        }
+    })
+    watch(() => user2.moneySum, money =>{
+        if(money < 0) {
+            alert(user2.userName);
         }
     })
 
@@ -76,16 +96,27 @@ export const {
         // 用户一逻辑
         if (isUser1Active.value) {
             if (e.key === 'w') {
-                user1.moveTo(getN());
+                if (controller.activeBehavior === 'move') {
+                    user1.moveTo(getN());
+                    // 移动完了，看看对应step有没有需要特殊按键的
+                    controller.setActiveBehavior('');
+                } else if (controller.activeBehavior === 'buy') {
+                    areaAddressList[user1.currentStep].owner = user1.id;
+                } else if (controller.activeBehavior === 'update') {
+                    areaAddressList[user1.currentStep].houseLevel!++;
+                }
+                // 无论按了什么最终都把控制器交给另一个用户
+                controller.activeUser(user2.id);
+            } else if (e.key === 's') {
+                controller.activeUser(user2.id);
             }
         }
-        // 用户二逻辑
-        else {
-            if (e.key === 'ArrowUp') {
-                user2.moveTo(getN());
-            }
-        }
-        controller.setActiveBehavior('');
+        // 用户二逻辑 先注释掉，后面写
+        // else {
+        //     if (e.key === 'ArrowUp') {
+        //         user2.moveTo(getN());
+        //     }
+        // }
     })
 
     return {
