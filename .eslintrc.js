@@ -12,6 +12,7 @@ module.exports = {
     ecmaVersion: 2020
   },
   rules: {
+    'arrow-spacing': 'off',
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'quotes': 'off',
@@ -26,5 +27,8 @@ module.exports = {
     'lines-between-class-members': 'off',
     'no-tabs': 'off',
     'brace-style': 'off',
+    'keyword-spacing': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    'spaced-comment': 'off',
   }
 }

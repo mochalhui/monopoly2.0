@@ -15,7 +15,8 @@ export interface AreaItem {
 	},
 	moneyCost?: number; // 一片地多少钱
 	owner?: undefined | number; // id或者无
-	houseLevel?: 0; // 房子级别
+    houseLevel?: 0; // 房子级别
+    background?:string; //地皮颜色
 }
 
 export const createAreaAddressList = (): Array<AreaItem> => [
@@ -33,26 +34,29 @@ export const createAreaAddressList = (): Array<AreaItem> => [
 	{
 		id: "1",
 		gridarea: "1/2/1/3",
-		areaname: "area1 的第一块地",
+		areaname: " ",
 		moneyCost: 1000,
 		owner: undefined,
-		houseLevel: 0,
+        houseLevel: 0,
+        background: '#e6b8af'
 	},
 	{
 		id: "1",
 		gridarea: "1/3/1/4",
-		areaname: "area1 的第二块地",
+		areaname: "area1 1000块",
 		moneyCost: 1000,
 		owner: undefined,
-		houseLevel: 0,
+        houseLevel: 0,
+        background: '#e6b8af'
 	},
 	{
 		id: "1",
 		gridarea: "1/4/1/5",
-		areaname: "area1 的第三块地",
+		areaname: "",
 		moneyCost: 1000,
 		owner: undefined,
-		houseLevel: 0,
+        houseLevel: 0,
+        background: '#e6b8af'
 	},
 	{
 		id: "jail",
@@ -60,55 +64,62 @@ export const createAreaAddressList = (): Array<AreaItem> => [
 		areaname: "jail",
 		customProps: {
 			suspend: 2
-		}
+        },
+       
 	},
 	{
 		id: "2",
 		gridarea: "1/6/1/7",
-		areaname: "area2 的第一块地",
+		areaname: "area2",
 		moneyCost: 1000,
 		owner: undefined,
-		houseLevel: 0,
+        houseLevel: 0,
+        background: '#f4cccc'
 	},
 	{
 		id: "2",
 		gridarea: "1/7/1/8",
-		areaname: "area2 的第二块地",
+		areaname: "1000块",
 		moneyCost: 1000,
 		owner: undefined,
-		houseLevel: 0,
+        houseLevel: 0,
+        background: '#f4cccc'
 	},
 	{
 		id: "3",
 		gridarea: "1/8/1/9",
-		areaname: "area3 的第一块地",
+		areaname: "",
 		moneyCost: 1000,
 		owner: undefined,
-		houseLevel: 0,
+        houseLevel: 0,
+        background: '#fce5cd'
 	},
 	{
 		id: "3",
 		gridarea: "1/9/1/10",
-		areaname: "area3 的第二块地",
+		areaname: "area3",
 		moneyCost: 1000,
 		owner: undefined,
-		houseLevel: 0,
+        houseLevel: 0,
+        background: '#fce5cd'
 	},
 	{
 		id: "3",
 		gridarea: "1/10/1/11",
-		areaname: "area3 的第三块地",
+		areaname: "1000块",
 		moneyCost: 1000,
 		owner: undefined,
-		houseLevel: 0,
+        houseLevel: 0,
+        background: '#fce5cd'
 	},
 	{
 		id: "3",
 		gridarea: "1/11/1/12",
-		areaname: "area3 的第四块地",
+		areaname: "",
 		moneyCost: 1000,
 		owner: undefined,
-		houseLevel: 0,
+        houseLevel: 0,
+        background: '#fce5cd'
 	},
 	{
 		id: "store",
@@ -123,26 +134,29 @@ export const createAreaAddressList = (): Array<AreaItem> => [
 	{
 		id: "4",
 		gridarea: "2/12/2/13",
-		areaname: "area4 的第一块地",
+		areaname: "",
 		moneyCost: 1000,
 		owner: undefined,
-		houseLevel: 0,
+        houseLevel: 0,
+        background: '#fff2cc'
 	},
 	{
 		id: "4",
 		gridarea: "3/12/3/13",
-		areaname: "area4 的第二块地",
+		areaname: 'area4 1000',
 		moneyCost: 1000,
 		owner: undefined,
-		houseLevel: 0,
+        houseLevel: 0,
+        background: '#fff2cc'
 	},
 	{
 		id: "4",
 		gridarea: "4/12/4/13",
-		areaname: "area4 的第三块地",
+		areaname: "",
 		moneyCost: 1000,
 		owner: undefined,
-		houseLevel: 0,
+        houseLevel: 0,
+        background: '#fff2cc'
 	},
 	{
 		id: "lucky",
@@ -155,26 +169,29 @@ export const createAreaAddressList = (): Array<AreaItem> => [
 	{
 		id: "5",
 		gridarea: "6/12/6/13",
-		areaname: "area5 的第一块地",
+		areaname: "",
 		moneyCost: 1000,
 		owner: undefined,
-		houseLevel: 0,
+        houseLevel: 0,
+        background: '#d9ead3'
 	},
 	{
 		id: "5",
 		gridarea: "7/12/7/13",
-		areaname: "area5 的第二块地",
+		areaname: "area5 1000",
 		moneyCost: 1000,
 		owner: undefined,
-		houseLevel: 0,
+        houseLevel: 0,
+        background: '#d9ead3'
 	},
 	{
 		id: "5",
 		gridarea: "8/12/8/13",
-		areaname: "area5 的第三块地",
+		areaname: "",
 		moneyCost: 1000,
 		owner: undefined,
-		houseLevel: 0,
+        houseLevel: 0,
+        background: '#d9ead3'
 	},
 	{
 		id: "store",
@@ -189,26 +206,29 @@ export const createAreaAddressList = (): Array<AreaItem> => [
 	{
 		id: "6",
 		gridarea: "9/11/9/12",
-		areaname: "area6 的第一块地",
+		areaname: "",
 		moneyCost: 1000,
 		owner: undefined,
-		houseLevel: 0,
+        houseLevel: 0,
+        background: '#d0e0e3'
 	},
 	{
 		id: "6",
 		gridarea: "9/10/9/11",
-		areaname: "area6 的第二块地",
+		areaname: "area6 1000块",
 		moneyCost: 1000,
 		owner: undefined,
-		houseLevel: 0,
+        houseLevel: 0,
+        background: '#d0e0e3'
 	},
 	{
 		id: "6",
 		gridarea: "9/9/9/10",
-		areaname: "area6 的第三块地",
+		areaname: "",
 		moneyCost: 1000,
 		owner: undefined,
-		houseLevel: 0,
+        houseLevel: 0,
+        background: '#d0e0e3'
 	},
 	{
 		id: "hospital",
@@ -221,34 +241,38 @@ export const createAreaAddressList = (): Array<AreaItem> => [
 	{
 		id: "7",
 		gridarea: "9/7/9/8",
-		areaname: "area7 的第一块地",
+		areaname: "",
 		moneyCost: 1000,
 		owner: undefined,
-		houseLevel: 0,
+        houseLevel: 0,
+        background: '#c9daf8'
 	},
 	{
 		id: "7",
 		gridarea: "9/6/9/7",
-		areaname: "area7 的第二块地",
+		areaname: "1000块",
 		moneyCost: 1000,
 		owner: undefined,
-		houseLevel: 0,
+        houseLevel: 0,
+        background: '#c9daf8'
 	},
 	{
 		id: "7",
 		gridarea: "9/5/9/6",
-		areaname: "area7 的第三块地",
+		areaname: "area7",
 		moneyCost: 1000,
 		owner: undefined,
-		houseLevel: 0,
+        houseLevel: 0,
+        background: '#c9daf8'
 	},
 	{
 		id: "7",
 		gridarea: "9/4/9/5",
-		areaname: "area7 的第四块地",
+		areaname: "",
 		moneyCost: 1000,
 		owner: undefined,
-		houseLevel: 0,
+        houseLevel: 0,
+        background: '#c9daf8'
 	},
 	{
 		id: "lucky",
@@ -261,10 +285,11 @@ export const createAreaAddressList = (): Array<AreaItem> => [
 	{
 		id: "8",
 		gridarea: "9/2/9/3",
-		areaname: "area8 ",
+		areaname: "area8 1000",
 		moneyCost: 1000,
 		owner: undefined,
-		houseLevel: 0,
+        houseLevel: 0,
+        background: '#cfe2f3'
 	},
 	{
 		id: "store",
@@ -279,34 +304,38 @@ export const createAreaAddressList = (): Array<AreaItem> => [
 	{
 		id: "9",
 		gridarea: "8/1/8/2",
-		areaname: "area9 的第四块地",
+		areaname: "",
 		moneyCost: 1000,
 		owner: undefined,
-		houseLevel: 0,
+        houseLevel: 0,
+        background: '#d9d2e9'
 	},
 	{
 		id: "9",
 		gridarea: "7/1/7/2",
-		areaname: "area9 的第三块地",
+		areaname: "1000",
 		moneyCost: 1000,
 		owner: undefined,
-		houseLevel: 0,
+        houseLevel: 0,
+        background: '#d9d2e9'
 	},
 	{
 		id: "9",
 		gridarea: "6/1/6/2",
-		areaname: "area9 的第二块地",
+		areaname: "area9",
 		moneyCost: 1000,
 		owner: undefined,
-		houseLevel: 0,
+        houseLevel: 0,
+        background: '#d9d2e9'
 	},
 	{
 		id: "9",
 		gridarea: "5/1/5/2",
-		areaname: "area9 的第一块地",
+		areaname: "",
 		moneyCost: 1000,
 		owner: undefined,
-		houseLevel: 0,
+        houseLevel: 0,
+        background: '#d9d2e9'
 	},
 	{
 		id: "bank",
@@ -316,18 +345,20 @@ export const createAreaAddressList = (): Array<AreaItem> => [
 	{
 		id: "10",
 		gridarea: "3/1/3/2",
-		areaname: "area10 的第二块地",
+		areaname: "1000",
 		moneyCost: 1000,
 		owner: undefined,
-		houseLevel: 0,
+        houseLevel: 0,
+        background: '#ead1dc'
 	},
 	{
 		id: "10",
 		gridarea: "2/1/2/2",
-		areaname: "area10 的第一块地",
+		areaname: "area10",
 		moneyCost: 1000,
 		owner: undefined,
-		houseLevel: 0,
+        houseLevel: 0,
+        background: '#ead1dc'
 	},
 ];
 
@@ -371,7 +402,7 @@ export const pass = [//经过房子的属性
 	}
 ]
 export interface luckyList {
-	eachCoin: object;// 每回合变更金币, number
+	eachCoin: () => number;// 每回合变更金币, number
 	coin: number;//  Number 直接给或者扣的钱
 	stopTime: number;// 炸弹停留次数
 }
@@ -391,5 +422,6 @@ export const behaviour: Partial<Record<actions, string>> = {
 	update: '升级',
 	store: '商城购买',
 }
+
 
 export const updateCost = 200; // 升级需要的钱
