@@ -8,11 +8,12 @@
     >
       {{ item.areaname }}
     </div>
+    <div v-for="(item,index) in userList" :key="'user'+index" :id="item.id" :style="{gridArea: item.gridArea,backgroundImage: `url(${item.image})`,position:'absolute',width:'100px',height:'100px',zIndex:'100'}">{{item.id}}</div>
   </div>
 </template>
 <script lang="ts">
 import { createContext, useContext } from "./models";
-import { defineComponent } from "@vue/composition-api";
+import { defineComponent, watch } from "@vue/composition-api";
 
 export default defineComponent({
 
@@ -20,8 +21,13 @@ export default defineComponent({
 
     createContext();
      const { state } = useContext();
+   document.addEventListener('keydown',(e)=>{
+     console.log(e)
+   })
+
      return {
       areaAddressList: state.areaAddressList,
+      userList: state.userList
     };
   }
 });

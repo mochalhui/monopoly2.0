@@ -5,6 +5,7 @@ import { reactive, computed, watch } from '@vue/composition-api'
 import { createAreaAddressList, behaviour, updateCost } from './interface';
 const getN = () => {
     // TODO:zzh 
+    console.log('here')
     return Math.ceil(Math.random() * 6);
 }
 export const {
@@ -16,7 +17,7 @@ export const {
         userName: '大聪明',
         moneySum: 10000,
         eachCoin: 300,
-        image: '',
+        image: "../src/assets/Girl-03.png",
     }));
     const areaAddressList = reactive(createAreaAddressList());
 
@@ -25,7 +26,7 @@ export const {
             userName: '爱德华',
             moneySum: 8000,
             eachCoin: 400,
-            image: ''
+            image: "../src/assets/Boy-04.png"
         }
     ));
     controller.activeUser(user1.id); // 激活用户1
@@ -107,7 +108,7 @@ export const {
             customProps,
         } = areaAddressList[step];
         if (user1.stopCount) {
-            // 如果二号在监狱
+            // 如果一号在监狱
             user1.stopCount--;
             controller.setActiveBehavior('move');
         } else if (owner) {
@@ -168,6 +169,7 @@ export const {
                 if (controller.activeBehavior === 'move') {
                     user1.moveTo(getN());
                     // 移动完了，看看对应step有没有需要特殊按键的
+                    
                     controller.setActiveBehavior('');
                 } else if (controller.activeBehavior === 'buy') {
                     areaAddressList[user1.currentStep].owner = user1.id;
@@ -193,9 +195,9 @@ export const {
                     areaAddressList[user2.currentStep].houseLevel!++;
                 }
                 // 无论按了什么最终都把控制器交给另一个用户
-                controller.activeUser(user2.id);
+                controller.activeUser(user1.id);
             } else if (e.key === 'ArrowDown') {
-                controller.activeUser(user2.id);
+                controller.activeUser(user1.id);
             }
         }
     })
