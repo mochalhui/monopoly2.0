@@ -40,17 +40,16 @@ export default class User {
   }
   moveTo(num: number) {
     this.currentStep += num;
-    console.log(this)
-    let gridStr = this.gridArea;
-    let gridArr = gridStr.split('/').map(Number);
+    const gridStr = this.gridArea;
+    const gridArr = gridStr.split('/').map(Number);
     if (gridArr[2] === 1) {
-      let tempColumn = gridArr[3]+ num;
+      const tempColumn = gridArr[3] + num;
       if (gridArr[2] === 1) {
         if (tempColumn < 14) {
           gridArr[3] = tempColumn;
           gridArr[1] = tempColumn - 1;
         } else {
-          let diffColumn = tempColumn - 13;
+          const diffColumn = tempColumn - 13;
           gridArr[1] = 12;
           gridArr[3] = 13;
           gridArr[0] = gridArr[0] + diffColumn;
@@ -59,14 +58,14 @@ export default class User {
       }
     } else if (
       gridArr[3] === 13 &&
-      gridArr[0] != 9
+      gridArr[0] !== 9
     ) {
-      let tempRow = gridArr[2] + num;
+      const tempRow = gridArr[2] + num;
       if (tempRow < 10) {
         gridArr[2] = tempRow;
         gridArr[0] = tempRow;
       } else {
-        let diffRow = tempRow - 8;
+        const diffRow = tempRow - 8;
         gridArr[0] = 9;
         gridArr[2] = 9;
         gridArr[1] = 13 - diffRow;
@@ -74,9 +73,9 @@ export default class User {
       }
     } else if (
       gridArr[0] === 9 &&
-      gridArr[1] != 1
+      gridArr[1] !== 1
     ) {
-      let tempColumn = gridArr[1] - num;
+      const tempColumn = gridArr[1] - num;
       if (tempColumn > 0) {
         gridArr[1] = tempColumn;
         gridArr[3] = gridArr[1] + 1;
@@ -87,7 +86,7 @@ export default class User {
         gridArr[3] = 2;
       }
     } else {
-      let tempRow = gridArr[0] - num;
+      const tempRow = gridArr[0] - num;
       if (tempRow > 0) {
         gridArr[0] = tempRow;
         gridArr[2] = tempRow;
