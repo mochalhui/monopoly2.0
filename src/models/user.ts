@@ -39,7 +39,8 @@ export default class User {
     this.eachCoin = this.eachCoin + range;
   }
   moveTo(num: number) {
-    this.currentStep += num;
+    num = 4;
+    this.addStep(num);
     const gridStr = this.gridArea;
     const gridArr = gridStr.split('/').map(Number);
     if (gridArr[2] === 1) {
@@ -99,5 +100,12 @@ export default class User {
     }
     this.gridArea = gridArr.join("/").toString();
   }
- 
+  addStep(num: number) {
+    const furtureStep = num + this.currentStep;
+    if (this.currentStep < 35 && furtureStep > 34) {
+      this.moneySum += 1000;
+    }
+    this.currentStep = furtureStep < 38 ? furtureStep : furtureStep - 38;
+  }
+
 }

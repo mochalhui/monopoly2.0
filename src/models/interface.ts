@@ -1,3 +1,4 @@
+import JailImg from '@/assets/监狱.png';
 export interface AreaItem {
 	id: string;
 	gridarea: string;
@@ -14,9 +15,10 @@ export interface AreaItem {
 		lucky?: boolean; // 是否抽奖，小羽毛
 	},
 	moneyCost?: number; // 一片地多少钱
-	owner?: undefined | number; // id或者无
+	owner?: '' | number; // id或者无
     houseLevel?: 0; // 房子级别
     background?:string; //地皮颜色
+    backgroundImg? : string;//特殊地皮img 超市、监狱、医院 等
 }
 
 export const createAreaAddressList = (): Array<AreaItem> => [
@@ -29,14 +31,14 @@ export const createAreaAddressList = (): Array<AreaItem> => [
 			storeGoods: {
 				goodsList: [],
 			}
-		}
+		},
 	},
 	{
 		id: "1",
 		gridarea: "1/2/1/3",
 		areaname: " ",
 		moneyCost: 1000,
-		owner: undefined,
+		owner: '',
         houseLevel: 0,
         background: '#e6b8af'
 	},
@@ -45,7 +47,7 @@ export const createAreaAddressList = (): Array<AreaItem> => [
 		gridarea: "1/3/1/4",
 		areaname: "area1 1000块",
 		moneyCost: 1000,
-		owner: undefined,
+		owner: '',
         houseLevel: 0,
         background: '#e6b8af'
 	},
@@ -54,17 +56,18 @@ export const createAreaAddressList = (): Array<AreaItem> => [
 		gridarea: "1/4/1/5",
 		areaname: "",
 		moneyCost: 1000,
-		owner: undefined,
+		owner: '',
         houseLevel: 0,
         background: '#e6b8af'
 	},
 	{
 		id: "jail",
 		gridarea: "1/5/1/6",
-		areaname: "jail",
+		areaname: "",
 		customProps: {
 			suspend: 2
         },
+        backgroundImg: JailImg
        
 	},
 	{
@@ -72,7 +75,7 @@ export const createAreaAddressList = (): Array<AreaItem> => [
 		gridarea: "1/6/1/7",
 		areaname: "area2",
 		moneyCost: 1000,
-		owner: undefined,
+		owner: '',
         houseLevel: 0,
         background: '#f4cccc'
 	},
@@ -81,7 +84,7 @@ export const createAreaAddressList = (): Array<AreaItem> => [
 		gridarea: "1/7/1/8",
 		areaname: "1000块",
 		moneyCost: 1000,
-		owner: undefined,
+		owner: '',
         houseLevel: 0,
         background: '#f4cccc'
 	},
@@ -90,7 +93,7 @@ export const createAreaAddressList = (): Array<AreaItem> => [
 		gridarea: "1/8/1/9",
 		areaname: "",
 		moneyCost: 1000,
-		owner: undefined,
+		owner: '',
         houseLevel: 0,
         background: '#fce5cd'
 	},
@@ -99,7 +102,7 @@ export const createAreaAddressList = (): Array<AreaItem> => [
 		gridarea: "1/9/1/10",
 		areaname: "area3",
 		moneyCost: 1000,
-		owner: undefined,
+		owner: '',
         houseLevel: 0,
         background: '#fce5cd'
 	},
@@ -108,7 +111,7 @@ export const createAreaAddressList = (): Array<AreaItem> => [
 		gridarea: "1/10/1/11",
 		areaname: "1000块",
 		moneyCost: 1000,
-		owner: undefined,
+		owner: '',
         houseLevel: 0,
         background: '#fce5cd'
 	},
@@ -117,7 +120,7 @@ export const createAreaAddressList = (): Array<AreaItem> => [
 		gridarea: "1/11/1/12",
 		areaname: "",
 		moneyCost: 1000,
-		owner: undefined,
+		owner: '',
         houseLevel: 0,
         background: '#fce5cd'
 	},
@@ -136,7 +139,7 @@ export const createAreaAddressList = (): Array<AreaItem> => [
 		gridarea: "2/12/2/13",
 		areaname: "",
 		moneyCost: 1000,
-		owner: undefined,
+		owner: '',
         houseLevel: 0,
         background: '#fff2cc'
 	},
@@ -145,7 +148,7 @@ export const createAreaAddressList = (): Array<AreaItem> => [
 		gridarea: "3/12/3/13",
 		areaname: 'area4 1000',
 		moneyCost: 1000,
-		owner: undefined,
+		owner: '',
         houseLevel: 0,
         background: '#fff2cc'
 	},
@@ -154,7 +157,7 @@ export const createAreaAddressList = (): Array<AreaItem> => [
 		gridarea: "4/12/4/13",
 		areaname: "",
 		moneyCost: 1000,
-		owner: undefined,
+		owner: '',
         houseLevel: 0,
         background: '#fff2cc'
 	},
@@ -171,7 +174,7 @@ export const createAreaAddressList = (): Array<AreaItem> => [
 		gridarea: "6/12/6/13",
 		areaname: "",
 		moneyCost: 1000,
-		owner: undefined,
+		owner: '',
         houseLevel: 0,
         background: '#d9ead3'
 	},
@@ -180,7 +183,7 @@ export const createAreaAddressList = (): Array<AreaItem> => [
 		gridarea: "7/12/7/13",
 		areaname: "area5 1000",
 		moneyCost: 1000,
-		owner: undefined,
+		owner: '',
         houseLevel: 0,
         background: '#d9ead3'
 	},
@@ -189,7 +192,7 @@ export const createAreaAddressList = (): Array<AreaItem> => [
 		gridarea: "8/12/8/13",
 		areaname: "",
 		moneyCost: 1000,
-		owner: undefined,
+		owner: '',
         houseLevel: 0,
         background: '#d9ead3'
 	},
@@ -208,7 +211,7 @@ export const createAreaAddressList = (): Array<AreaItem> => [
 		gridarea: "9/11/9/12",
 		areaname: "",
 		moneyCost: 1000,
-		owner: undefined,
+		owner: '',
         houseLevel: 0,
         background: '#d0e0e3'
 	},
@@ -217,7 +220,7 @@ export const createAreaAddressList = (): Array<AreaItem> => [
 		gridarea: "9/10/9/11",
 		areaname: "area6 1000块",
 		moneyCost: 1000,
-		owner: undefined,
+		owner: '',
         houseLevel: 0,
         background: '#d0e0e3'
 	},
@@ -226,7 +229,7 @@ export const createAreaAddressList = (): Array<AreaItem> => [
 		gridarea: "9/9/9/10",
 		areaname: "",
 		moneyCost: 1000,
-		owner: undefined,
+		owner: '',
         houseLevel: 0,
         background: '#d0e0e3'
 	},
@@ -243,7 +246,7 @@ export const createAreaAddressList = (): Array<AreaItem> => [
 		gridarea: "9/7/9/8",
 		areaname: "",
 		moneyCost: 1000,
-		owner: undefined,
+		owner: '',
         houseLevel: 0,
         background: '#c9daf8'
 	},
@@ -252,7 +255,7 @@ export const createAreaAddressList = (): Array<AreaItem> => [
 		gridarea: "9/6/9/7",
 		areaname: "1000块",
 		moneyCost: 1000,
-		owner: undefined,
+		owner: '',
         houseLevel: 0,
         background: '#c9daf8'
 	},
@@ -261,7 +264,7 @@ export const createAreaAddressList = (): Array<AreaItem> => [
 		gridarea: "9/5/9/6",
 		areaname: "area7",
 		moneyCost: 1000,
-		owner: undefined,
+		owner: '',
         houseLevel: 0,
         background: '#c9daf8'
 	},
@@ -270,7 +273,7 @@ export const createAreaAddressList = (): Array<AreaItem> => [
 		gridarea: "9/4/9/5",
 		areaname: "",
 		moneyCost: 1000,
-		owner: undefined,
+		owner: '',
         houseLevel: 0,
         background: '#c9daf8'
 	},
@@ -287,7 +290,7 @@ export const createAreaAddressList = (): Array<AreaItem> => [
 		gridarea: "9/2/9/3",
 		areaname: "area8 1000",
 		moneyCost: 1000,
-		owner: undefined,
+		owner: '',
         houseLevel: 0,
         background: '#cfe2f3'
 	},
@@ -306,7 +309,7 @@ export const createAreaAddressList = (): Array<AreaItem> => [
 		gridarea: "8/1/8/2",
 		areaname: "",
 		moneyCost: 1000,
-		owner: undefined,
+		owner: '',
         houseLevel: 0,
         background: '#d9d2e9'
 	},
@@ -315,7 +318,7 @@ export const createAreaAddressList = (): Array<AreaItem> => [
 		gridarea: "7/1/7/2",
 		areaname: "1000",
 		moneyCost: 1000,
-		owner: undefined,
+		owner: '',
         houseLevel: 0,
         background: '#d9d2e9'
 	},
@@ -324,7 +327,7 @@ export const createAreaAddressList = (): Array<AreaItem> => [
 		gridarea: "6/1/6/2",
 		areaname: "area9",
 		moneyCost: 1000,
-		owner: undefined,
+		owner: '',
         houseLevel: 0,
         background: '#d9d2e9'
 	},
@@ -333,7 +336,7 @@ export const createAreaAddressList = (): Array<AreaItem> => [
 		gridarea: "5/1/5/2",
 		areaname: "",
 		moneyCost: 1000,
-		owner: undefined,
+		owner: '',
         houseLevel: 0,
         background: '#d9d2e9'
 	},
@@ -347,7 +350,7 @@ export const createAreaAddressList = (): Array<AreaItem> => [
 		gridarea: "3/1/3/2",
 		areaname: "1000",
 		moneyCost: 1000,
-		owner: undefined,
+		owner: '',
         houseLevel: 0,
         background: '#ead1dc'
 	},
@@ -356,7 +359,7 @@ export const createAreaAddressList = (): Array<AreaItem> => [
 		gridarea: "2/1/2/2",
 		areaname: "area10",
 		moneyCost: 1000,
-		owner: undefined,
+		owner: '',
         houseLevel: 0,
         background: '#ead1dc'
 	},
@@ -422,6 +425,5 @@ export const behaviour: Partial<Record<actions, string>> = {
 	update: '升级',
 	store: '商城购买',
 }
-
 
 export const updateCost = 200; // 升级需要的钱

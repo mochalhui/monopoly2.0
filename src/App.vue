@@ -4,11 +4,11 @@
       v-for="(item, index) in areaAddressList"
       :key="index"
       :id="item.id"
-      :style="{ gridArea: item.gridarea , background: item.background}"
+      :style="{ gridArea: item.gridarea , background:item.background, backgroundImage : `url(${item.backgroundImg})`,backgroundSize: '100%'}"
     >
       {{ item.areaname }}
     </div>
-    <div v-for="(item,index) in userList" :key="'user'+index" :id="item.id" :style="{gridArea: item.gridArea,backgroundImage: `url(${item.image})`,position:'absolute',width:'100px',height:'100px',zIndex:'100'}">{{item.id}}</div>
+    <div v-for="(item,index) in userList" :key="'user'+index" :id="item.id" :style="{gridArea: item.gridArea,backgroundImage: `url(${item.image})`,position:'absolute',width:'100px',height:'100px',zIndex:'100'}"></div>
   </div>
 </template>
 <script lang="ts">
@@ -21,13 +21,10 @@ export default defineComponent({
 
     createContext();
      const { state } = useContext();
-   document.addEventListener('keydown',(e)=>{
-     console.log(e)
-   })
-
      return {
+      ...state,
       areaAddressList: state.areaAddressList,
-      userList: state.userList
+      userList: state.userList,
     };
   }
 });
