@@ -56,7 +56,6 @@ export const {
     userName: user1.userName,
     behaviour: 'move',
   })
-
   watch(() => controller.currentUserId, (userId) => {
     if (userId) {
       userInfo.currentUser = userList.value.find(item => item.id === userId) !;
@@ -156,7 +155,7 @@ export const {
     } else if (customProps) {
       // 如果走到的是特殊位置
       if (customProps.suspend) {
-        // 监狱
+        // 监狱or医院
         user2.stopCount += customProps.suspend + 1;
         controller.activeUser(user1.id);
       } else if (customProps.lucky) {

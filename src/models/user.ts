@@ -39,7 +39,7 @@ export default class User {
     this.eachCoin = this.eachCoin + range;
   }
   moveTo(num: number) {
-    num = 4;
+
     this.addStep(num);
     const gridStr = this.gridArea;
     const gridArr = gridStr.split('/').map(Number);
